@@ -1,0 +1,28 @@
+{
+  "name": "react-tech-stack-tutorial",
+  "version": "1.0.0",
+  "description": "react tech stack tutorials",
+  "main": "index.js",
+  "repository": "git@github.com:/lovesora/react-tech-stack-tutorial.git",
+  "author": "liuxin",
+  "license": "MIT",
+  "scripts": {
+    "start:dev": "webpack-dev-server"
+  },
+  "devDependencies": {
+    "babel-core": "^6.24.1",
+    "babel-loader": "^7.0.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.1",
+    "path": "^0.12.7",
+    "react": "^15.5.4",
+    "react-dom": "^15.5.4",
+    "react-router": "3.0.2",
+    "sass-loader": "^6.0.3",
+    "style-loader": "^0.17.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.5.1",
+    "webpack-dev-server": "^2.4.5"
+  }
+}
