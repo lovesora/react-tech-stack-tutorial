@@ -1,3 +1,4 @@
+import 'material-design-icons/iconfont/material-icons.css';
 import 'materialize-css/sass/materialize.scss';
 import './style.scss';
 
@@ -7,8 +8,6 @@ export default class App extends React.Component {
     constructor(...args) {
         super(...args);
     }
-
-
 
     render() {
         return (

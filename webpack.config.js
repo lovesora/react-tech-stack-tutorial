@@ -35,10 +35,10 @@ var config = {
             minChunks: 2
         }),
         new webpack.ProvidePlugin({
-            $: 'jquery',
-            jQuery: 'jquery',
-            'window.jQuery': 'jquery',
-            'window.$': 'jquery',
+            // $: 'jquery',
+            // jQuery: 'jquery',
+            // 'window.jQuery': 'jquery',
+            // 'window.$': 'jquery',
             React: "react",
             ReactDOM: "react-dom"
         })
@@ -50,7 +50,7 @@ var config = {
         //为资源文件取别名，缩短引用的路径
         alias: {
             // react: path.resolve(paths.src, "vendor/react/react.min.js"),
-            // jquery: path.resolve(paths.context, 'vendor/jquery-vendor.js')
+            jquery_v2: path.resolve(paths.context, 'node_modules/materialize-css/node_modules/jquery/dist/jquery.js')
         }
     },
     module: {
@@ -63,10 +63,14 @@ var config = {
                 }
             }]
         }, {
-            test: require.resolve('jquery'),
+            // test: require.resolve('jquery_v2'),
+            test: path.resolve(paths.context, 'node_modules/materialize-css/node_modules/jquery/dist/jquery.js'),
             use: [{
                 loader: 'expose-loader',
                 options: '$'
+            }, {
+                loader: 'expose-loader',
+                options: 'jQuery'
             }]
         }, {
             test: /\.css$/,
