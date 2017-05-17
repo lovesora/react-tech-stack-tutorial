@@ -35,7 +35,10 @@ var config = {
             minChunks: 2
         }),
         new webpack.ProvidePlugin({
-            $: "jquery",
+            $: 'jquery',
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery',
+            'window.$': 'jquery',
             React: "react",
             ReactDOM: "react-dom"
         })
@@ -47,7 +50,7 @@ var config = {
         //为资源文件取别名，缩短引用的路径
         alias: {
             // react: path.resolve(paths.src, "vendor/react/react.min.js"),
-            jquery: 'vendor/jquery-vendor.js'
+            // jquery: path.resolve(paths.context, 'vendor/jquery-vendor.js')
         }
     },
     module: {
@@ -58,6 +61,12 @@ var config = {
                 options: {
                     presets: ["es2015", "react"]
                 }
+            }]
+        }, {
+            test: require.resolve('jquery'),
+            use: [{
+                loader: 'expose-loader',
+                options: '$'
             }]
         }, {
             test: /\.css$/,
@@ -80,18 +89,16 @@ var config = {
                 },
                 "sass-loader?sourceMap"
             ]
-        }
-        , {
+        }, {
             test: /\.(gif|jpg|png|woff|woff2|svg|eot|ttf)\??.*$/,
             use: [{
                 loader: "url-loader",
                 options: {
-                    limit:  50000,
+                    limit: 50000,
                     name: "[path][name].[ext]"
                 }
             }]
-        }
-        ]
+        }]
     },
     devServer: {
         contentBase: paths.root

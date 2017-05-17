@@ -1,4 +1,5 @@
-import 'materialize-css/sass/materialize.scss';
+import $ from 'jquery';
+import 'materialize-css';
 
 import NavLink from '../../react-router/NavLink.js';
 
