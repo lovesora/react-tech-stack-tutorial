@@ -15,6 +15,9 @@ const paths = {
 }
 
 var config = {
+    // performance: {
+    //     hints: false
+    // },
     devtool: 'source-map',
     context: paths.context,
     entry: {
@@ -32,19 +35,19 @@ var config = {
             minChunks: 2
         }),
         new webpack.ProvidePlugin({
-            // jQuery: "jquery",
-            // $: "jquery",
+            $: "jquery",
             React: "react",
             ReactDOM: "react-dom"
         })
     ],
     resolve: {
         //当在css中@import css出错“can’t find ___”可以开启以下resolve
-        // modules: [paths.src, "node_modules"],
+        // modules: [paths.context, "node_modules"],
 
         //为资源文件取别名，缩短引用的路径
         alias: {
             // react: path.resolve(paths.src, "vendor/react/react.min.js"),
+            jquery: 'vendor/jquery-vendor.js'
         }
     },
     module: {
@@ -62,7 +65,7 @@ var config = {
                 loader: "css-loader",
                 options: {
                     modules: false,
-                    url: false
+                    url: true
                 }
             }]
         }, {
@@ -72,14 +75,14 @@ var config = {
                     loader: "css-loader",
                     options: {
                         modules: false,
-                        url: false
+                        url: true
                     }
                 },
                 "sass-loader?sourceMap"
             ]
         }
         , {
-            test: /\.(gif|jpg|png|woff|svg|eot|ttf)\??.*$/,
+            test: /\.(gif|jpg|png|woff|woff2|svg|eot|ttf)\??.*$/,
             use: [{
                 loader: "url-loader",
                 options: {
